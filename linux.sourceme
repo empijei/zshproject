@@ -1,0 +1,11 @@
+alias getclip='xclip -selection clipboard -o'
+alias open="xdg-open"
+alias pbpaste='xclip -selection clipboard -o'
+alias setclip='xclip -selection c'
+alias pbcopy='xclip -selection c'
+alias g="surfraw google"
+alias volume="amixer set Master"
+alias xrandr-above='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --above eDP1'
+alias xrandr-left='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --left-of eDP1'
+alias xrandr-right='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --right-of eDP1'
+alias xrandr-same='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --same-as eDP1'

@@ -1,0 +1,8 @@
+alias install="sudo apt-get install"
+alias isntall="sudo apt-get install"
+alias search="apt-cache search"
+alias update="sudo apt-get update"
+alias upgrade="sudo apt-get upgrade -y"
+alias remove="sudo apt-get remove"
+alias purge="sudo apt-get purge"
+alias maintenance="sudo aptitude safe-upgrade -y && sudo apt-get autoremove -y"

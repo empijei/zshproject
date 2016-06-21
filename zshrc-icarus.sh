@@ -1,0 +1,7 @@
+alias cat="lolcat"
+alias aweconfig="vim $HOME/.config/awesome/rc.lua"
+alias etodo="vim $HOME/Dropbox/TODO"
+alias ltodo="cat $HOME/Dropbox/TODO"
+alias mobsf="mobsf-manage runserver"
+alias òs="ls"
+alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""

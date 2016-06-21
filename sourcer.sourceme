@@ -2,7 +2,7 @@
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/autojump/autojump.zsh
-for tosource in $(dirname $0)/*.sh
+for tosource in "$(dirname $0)"/*.sh
 do
 	source $tosource
 done

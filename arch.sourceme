@@ -1,0 +1,34 @@
+alias install="sudo pacman -S --needed"
+alias mkpkg="makepkg -s"
+alias update="type yaourt && yaourt -Syua || pacman -Syua"
+alias isntall="sudo pacman -S --needed"
+alias remove="sudo pacman -R "
+# Arch linux maintenance:
+maintenance-arch(){
+	echo "Updating list of trusted keys"
+		sudo pacman-key -u 
+		echo "Updating the system"
+		type yaourt && yaourt -Syua || pacman -Syua
+
+		echo "Removing old cached packages"
+		sudo paccache -r 
+		sudo paccache -ruk0 
+
+		echo "Optimizing pacman db" 
+		sudo pacman-optimize
+
+		sudo systemctl daemon-reload 
+
+		sudo pkgfile --update
+
+		echo "Listing failed services"
+		sudo systemctl --failed --no-pager
+
+		echo journalctl -p 0..3 -xn
+		sudo journalctl -p 0..3 -xn --no-pager
+
+		echo "Checking startup times"
+		systemd-analyze blame | head
+
+		echo Size of coredumps: $(du /var/lib/systemd/coredump/)
+}
