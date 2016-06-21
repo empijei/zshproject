@@ -33,6 +33,7 @@ alias fucking="sudo"
 alias g="surfraw google"
 alias gdb="gdb -quiet"
 alias getclip='xclip -selection clipboard -o'
+alias pbpaste='xclip -selection clipboard -o'
 alias grep='grep --color=auto'
 alias host2ip="dig +short"
 alias http="http --pretty all"
@@ -61,6 +62,7 @@ alias office-to-pdf="libreoffice --headless --invisible --convert-to pdf"
 alias open="xdg-open"
 alias remove="sudo pacman -R "
 alias setclip='xclip -selection c'
+alias pbcopy='xclip -selection c'
 alias sslscan="sslscan --no-failed"
 alias stopx="pkill -15 X"
 alias swap-flush="sudo swapoff -a && sudo swapon -a"
