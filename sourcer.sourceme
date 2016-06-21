@@ -1,0 +1,8 @@
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/autojump/autojump.zsh
+for tosource in $ZSHPROJECT/*.sh
+do
+	source $tosource
+done
