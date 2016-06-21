@@ -79,5 +79,5 @@ alias xrandr-above='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected
 alias xrandr-left='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --left-of eDP1'
 alias xrandr-right='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --right-of eDP1'
 alias xrandr-same='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --same-as eDP1'
-alias zshconfig="vim $HOME/Reinstall/arch/zsh/zshrc-$(hostname) && exec zsh"
+alias zshconfig="vim $(dirname $0)/zshrc-$(hostname).sh && exec zsh"
 alias òs="ls"
