@@ -105,7 +105,7 @@ iten(){
 }
                        
 jd-vim(){
-procyon $@ | vim - +"set filetype=java"
+procyon $@ | vim -c "set filetype=java buftype=nofile bufhidden=hide noswapfile" -
 }
 
 ip2host(){
