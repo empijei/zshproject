@@ -4,6 +4,12 @@ commit(){
 	git commit
 }
 
+cc(){
+	export CLIP="$(readlink -f $1)"
+}
+
+alias -g cv='$CLIP'
+
 commitp(){
 	commit
 	git push

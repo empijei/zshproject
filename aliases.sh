@@ -25,6 +25,7 @@ alias e="vim -p"
 alias egrep='grep -E --color=auto'
 alias ehco="echo"
 alias fgrep='grep -n --color=auto'
+alias fuck='sudo !!'
 alias fucking="sudo"
 alias gdb="gdb -quiet"
 alias grep='grep --color=auto'
