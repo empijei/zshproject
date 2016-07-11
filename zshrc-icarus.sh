@@ -1,4 +1,6 @@
 alias cat="lolcat"
+alias kb="setxkbmap it && xmodmap ~/.Xmodmap-lite"
+alias gpp="java -jar /usr/share/java/globalplatformpro/gp.jar"
 alias fgrpe="fgrep"
 alias aweconfig="vim $HOME/.config/awesome/rc.lua"
 alias etodo="vim $HOME/Dropbox/TODO"
