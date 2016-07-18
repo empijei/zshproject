@@ -59,6 +59,8 @@ bindkey "^[[4~" end-of-line
 bindkey "^[OF" end-of-line
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+bindkey '^U' backward-kill-line
+bindkey '^Y' yank
 
 zstyle :compinstall filename '~/.zshrc'
 
