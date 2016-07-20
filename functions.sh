@@ -4,6 +4,12 @@ commit(){
 	git commit
 }
 
+mkcdir(){
+	mkdir $1
+	cd $1
+}
+alias mkcd="mkcdir"
+
 cc(){
 	export CLIP="$(readlink -f $1)"
 }
