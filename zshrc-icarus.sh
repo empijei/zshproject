@@ -1,4 +1,5 @@
 alias cat="lolcat"
+alias gosh="gore"
 alias kb="setxkbmap it && xmodmap ~/.Xmodmap-lite"
 alias gpp="java -jar /usr/share/java/globalplatformpro/gp.jar"
 alias fgrpe="fgrep"
