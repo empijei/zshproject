@@ -1,7 +1,7 @@
-alias install="sudo pacman -S --needed"
+alias install="sudo yaourt -S --needed"
 alias mkpkg="makepkg -s"
 alias update="type yaourt && yaourt -Syua || pacman -Syua"
-alias isntall="sudo pacman -S --needed"
+alias isntall="sudo yaourt -S --needed"
 alias remove="sudo pacman -R "
 # Arch linux maintenance:
 maintenance-arch(){
