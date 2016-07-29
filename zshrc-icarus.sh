@@ -12,3 +12,7 @@ alias mobsf="mobsf-manage runserver"
 alias òs="ls"
 alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias emulator="export LD_PRELOAD='/usr/\$LIB/libstdc++.so.6 /usr/\$LIB/libgcc_s.so.1 /usr/\$LIB/libxcb.so.1 /usr/\$LIB/libgpg-error.so' && /home/rob/Android/Sdk/tools/qemu/linux-x86_64/qemu-system-x86_64 -netdelay none -netspeed full -avd Nexus_4_API_23 -gpu off"
+
+export JC_HOME="/opt/java/lib/java-card-development-kit/"
+export JAVA_HOME="/usr/lib/jvm/java-8-jdk/"
+export PATH="$PATH:$JC_HOME/bin:$JAVA_HOME/bin"
