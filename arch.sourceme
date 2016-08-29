@@ -2,7 +2,7 @@ alias mkpkg="makepkg -s"
 alias update="type yaourt && yaourt -Syua || pacman -Syua"
 alias install="yaourt -S --needed"
 alias isntall="yaourt -S --needed"
-alias remove="sudo pacman -R "
+alias remove="sudo pacman -Rs "
 # Arch linux maintenance:
 maintenance-arch(){
 	echo "Updating list of trusted keys"
