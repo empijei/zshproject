@@ -1,4 +1,5 @@
 alias cat="lolcat"
+alias rm="trash"
 alias yaourtman="mv $HOME/.yaourtrc{,.bak}"
 alias yaourtauto="mv $HOME/.yaourtrc{.bak,}"
 alias gosh="gore"
