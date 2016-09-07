@@ -10,10 +10,6 @@ mkcdir(){
 }
 alias mkcd="mkcdir"
 
-cc(){
-	export CLIP="$(readlink -f $1)"
-}
-
 alias -g cv='$CLIP'
 
 commitp(){

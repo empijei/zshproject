@@ -9,3 +9,8 @@ alias xrandr-above='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected
 alias xrandr-left='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --left-of eDP1'
 alias xrandr-right='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --right-of eDP1'
 alias xrandr-same='xrandr --output $(xrandr | grep -Po "^[A-Z0-9]+(?= connected)") --auto --same-as eDP1'
+
+cc(){
+	export CLIP="$(readlink -f $1)"
+	echo "$CLIP" | xclip -selection c
+}
