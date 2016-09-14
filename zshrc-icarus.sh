@@ -18,3 +18,15 @@ alias copernico="bash /home/rob/empijei/foobar/copernico-menu/fetch.sh"
 export JC_HOME="/opt/java/lib/java-card-development-kit/"
 export JAVA_HOME="/usr/lib/jvm/java-8-jdk/"
 export PATH="$PATH:$JC_HOME/bin:$JAVA_HOME/bin"
+print-logging(){
+echo "Listing failed services"
+sudo systemctl --failed --no-pager
+
+echo journalctl -p 0..3 -xn
+sudo journalctl -p 0..3 -xn --no-pager
+
+echo "Checking startup times"
+systemd-analyze blame | head
+
+echo Size of coredumps: $(du /var/lib/systemd/coredump/)
+}
