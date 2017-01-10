@@ -54,6 +54,8 @@ bindkey -v
 bindkey "^[[1~" beginning-of-line
 bindkey "[1;5D" beginning-of-line
 bindkey "^[OH" beginning-of-line
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 bindkey "[1;5C" end-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[OF" end-of-line
