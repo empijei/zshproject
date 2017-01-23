@@ -1,5 +1,5 @@
 #alias cat="lolcat"
-fortune -n 300 -a -s
+#fortune -n 300 -a -s
 alias top="htop"
 alias rm="trash"
 alias yaourtman="mv $HOME/.yaourtrc{,.bak}"
