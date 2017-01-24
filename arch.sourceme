@@ -1,0 +1,41 @@
+alias mkpkg="makepkg -s"
+update(){
+	echo "Updating list of trusted keys"
+	sudo pacman-key -u 
+
+	echo "Updating the system"
+	sudo pacman -Syu
+	which yaourt >/dev/null && yaourt -Syua
+	sudo pacman -Dk
+
+	echo "Removing old cached packages"
+	sudo paccache -r 
+	sudo paccache -ruk0 
+
+	echo "Optimizing pacman db" 
+	sudo pacman-optimize
+
+	echo "Reloading System Daemons"
+	sudo systemctl daemon-reload 
+
+	sudo pkgfile --update
+}
+
+alias install="yaourt -S --needed"
+alias isntall="yaourt -S --needed"
+alias remove="sudo pacman -Rs "
+# Arch linux maintenance:
+maintain(){
+		echo "Listing failed services"
+		sudo systemctl --failed --no-pager
+
+		echo journalctl -p 0..3 -xn
+		sudo journalctl -p 0..3 -xn --no-pager
+
+		echo "Checking startup times"
+		systemd-analyze blame | head
+
+		echo Size of coredumps: "$(du 2>/dev/null /var/lib/systemd/coredump/ -BM | tail -1 | egrep -o '[0-9]*M')"
+
+      echo Size of trash: "$(du 2>/dev/null $HOME/.local/share/Trash/files -BM | tail -1 | egrep -o '[0-9]*M')"
+}
