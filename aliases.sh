@@ -1,5 +1,6 @@
 alias "cd.."="cd ../"
 alias "cd../"="cd ../"
+alias "¿"="locate"
 alias -g "..."="../.."
 alias -g "...."="../../.."
 alias -g "..../"="../../../"
