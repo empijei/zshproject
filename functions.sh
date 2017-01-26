@@ -176,3 +176,11 @@ urldecode() {
     local url_encoded="${1//+/ }"
     printf '%b' "${url_encoded//"%"/\\x}"
 }
+
+backup(){
+ if [[ -e "$1.bak" ]] ; then
+	 echo "Error, backup already exist!"
+ else
+	 mv "$1" "$1.bak"
+ fi
+}
