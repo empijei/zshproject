@@ -177,6 +177,10 @@ urldecode() {
     printf '%b' "${url_encoded//"%"/\\x}"
 }
 
+datedecode(){
+	date -d @$1
+}
+
 backup(){
  if [[ -e "$1.bak" ]] ; then
 	 echo "Error, backup already exist!"

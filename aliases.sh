@@ -60,3 +60,4 @@ alias vimo="vim -p -M"
 alias webshare='python -m http.server'
 alias xpath="xmllint --xpath"
 alias zshconfig="vim \"$(dirname $0)\"/zshrc-$(hostname).sh && exec zsh"
+alias epoch="date +%s"
