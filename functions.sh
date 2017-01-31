@@ -178,7 +178,7 @@ urldecode() {
 }
 
 datedecode(){
-	date -d @$1
+	date -d @$(echo -n "$1" | head -c 10)
 }
 
 backup(){
