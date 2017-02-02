@@ -7,6 +7,7 @@ alias -g "..../"="../../../"
 alias -g ".../"="../../"
 alias -g egp="| egrep"
 alias -g gp="| grep"
+alias -g gpi="| grep -i"
 alias -g §="| while read line; do; "
 alias -g ç="; done"
 alias -s csv=vim
