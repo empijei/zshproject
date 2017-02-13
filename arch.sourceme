@@ -21,6 +21,10 @@ update(){
 	sudo pkgfile --update
 }
 
+deptree(){
+	dot <(pactree -g $1) -Txlib
+}
+
 alias install="yaourt -S --needed"
 alias isntall="yaourt -S --needed"
 alias remove="sudo pacman -Rs "
