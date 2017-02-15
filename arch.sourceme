@@ -24,6 +24,9 @@ update(){
 deptree(){
 	dot <(pactree -g $1) -Txlib
 }
+rdeptree(){
+	dot <(pactree -rg $1) -Txlib
+}
 
 alias install="yaourt -S --needed"
 alias isntall="yaourt -S --needed"
