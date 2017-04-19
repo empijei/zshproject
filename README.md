@@ -8,3 +8,5 @@ source ~/your-fork/zshproject/sourcer.sourceme
 ```
 
 Then, when you need to add something to your .zshrc, just use the command `zshconfig` that will create a file that will not conflict with other hostnames so you can keep your zshrc in sync across computers
+
+Depends on autojump and zsh-syntax-highlight
