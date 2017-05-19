@@ -50,6 +50,8 @@ autoload -U colors && colors
 autoload -Uz compinit
 compinit
 
+stty -ixon
+
 bindkey -v
 bindkey "^[[1~" beginning-of-line
 bindkey "[1;5D" beginning-of-line
@@ -61,9 +63,9 @@ bindkey "^[[4~" end-of-line
 bindkey "^[OF" end-of-line
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
 
 zstyle :compinstall filename '~/.zshrc'
 
-stty -ixon
