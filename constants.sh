@@ -22,8 +22,8 @@ setopt PUSHD_TO_HOME
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=10000000
+SAVEHIST=10000000
 RPROMPT='$(jobs | sed -e "s:\s*[-+]\s*[a-z]*:$1:g" | tr "\n" " ")%f'
 PROMPT='╭─$(parse-status)%F{3}%n@%m:%~%f
 ╰─$ ' #─>
