@@ -1,4 +1,5 @@
 alias mkpkg="makepkg -s"
+
 update(){
 	echo "Updating list of trusted keys"
 	sudo pacman-key -u 

@@ -25,7 +25,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 RPROMPT='$(jobs | sed -e "s:\s*[-+]\s*[a-z]*:$1:g" | tr "\n" " ")%f'
-PROMPT='╭─$(parse-status)%F{3}%n@%m:%~%f
+PROMPT='╭─$(parse-status)%F{3}%n@%m:%~%f$(git-stuff)
 ╰─$ ' #─>
 
 parse-status(){
@@ -44,6 +44,18 @@ parse-status(){
 			echo "%F{1} (ERROR $LAST_EXIT_CODE) "
 			;;
 	esac
+}
+
+git-stuff(){
+	git rev-parse --is-inside-work-tree >&/dev/null&&
+		echo &&
+		echo -n "╞  %F{4}git:("$(git rev-parse --abbrev-ref HEAD)") " && 
+	if [[ -z $(git status -s) ]] ; 
+	then
+		echo -n "%F{2}✓%f"
+	else
+		echo -n "%F{1}✗%f"
+	fi
 }
 
 autoload -U colors && colors
