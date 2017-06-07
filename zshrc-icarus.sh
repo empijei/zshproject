@@ -20,9 +20,9 @@ alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 alias emulator="export LD_PRELOAD='/usr/\$LIB/libstdc++.so.6 /usr/\$LIB/libgcc_s.so.1 /usr/\$LIB/libxcb.so.1 /usr/\$LIB/libgpg-error.so' && /home/rob/Android/Sdk/tools/qemu/linux-x86_64/qemu-system-x86_64 -netdelay none -netspeed full -avd Nexus_4_API_23 -gpu off"
 alias copernico="bash /home/rob/empijei/foobar/copernico-menu/fetch.sh"
 
-newproj(){
+analyze-code(){
 	echo "Counting lines of code"
-	cloc . | tee cloc.txt
+	cloc --md --out=cloc.md .
 	echo "Generating tags..."
 	ctags -R .
 	echo "Tags generated"
