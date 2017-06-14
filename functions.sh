@@ -52,6 +52,29 @@ extract-archive () {
     fi
 }
 
+#fetch an external package in an ordered manner
+gitget(){
+	PREFIX="https://"
+	if [[ $1 == https://* ]] then
+		_PATH=${1#https://}
+	elif [[ $1 == http://* ]] then
+		_PATH=${1#https://}
+		PREFIX="http://"
+	else
+		_PATH=$1
+	fi
+	DIRNAME=`dirname $_PATH`
+	if [[ -z "$EXTERNAL_PACKAGES" ]] then
+		EXTERNAL_PACKAGES="$HOME"
+	fi
+	DIR="$EXTERNAL_PACKAGES/$DIRNAME"
+	mkdir -p $DIR
+	cd "$DIR"
+	git clone "$PREFIX$_PATH"
+	BASENAME=`basename $_PATH`
+	cd ${BASENAME%.git}
+}
+
 #ZSH HELPER (local)
 useful(){
 	fgrep "$@"  $HOME/useful-commands/*.use -R
