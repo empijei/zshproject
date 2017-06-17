@@ -49,7 +49,7 @@ parse-status(){
 git-stuff(){
 	git rev-parse --is-inside-work-tree >&/dev/null&&
 		echo &&
-		echo -n "╞  %F{4}git:("$(git rev-parse --abbrev-ref HEAD)") " && 
+		echo -n "╞  %F{4}git:("$(git rev-parse --abbrev-ref HEAD 2>/dev/null)") " && 
 	if [[ -z $(git status -s) ]] ; 
 	then
 		echo -n "%F{2}✓%f"
