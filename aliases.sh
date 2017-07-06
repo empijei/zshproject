@@ -26,6 +26,7 @@ alias dropbox="dropbox-cli"
 alias e="vim -p"
 alias egrep='grep -E --color=auto'
 alias ehco="echo"
+alias epoch="date +%s"
 alias fgrep='grep -nR --color=auto --exclude tags'
 alias fuck='sudo !!'
 alias fucking="sudo"
@@ -49,6 +50,8 @@ alias nmap-ssh="nmap --script ssh2-enum-algos -vv -p 22 -Pn -oA nmap-ssh" #TODO 
 alias nmap-ssl="nmap -sV -sC -vv -oA nmap-ssl"
 alias nmap="sudo nmap"
 alias office-to-pdf="libreoffice --headless --invisible --convert-to pdf"
+alias patternfind="cyclic -l"
+alias patterngen="cyclic"
 alias sslscan="sslscan --no-failed"
 alias stopx="pkill -15 X"
 alias swap-flush="sudo swapoff -a && sudo swapon -a"
@@ -61,4 +64,3 @@ alias vimo="vim -p -M"
 alias webshare='python -m http.server'
 alias xpath="xmllint --xpath"
 alias zshconfig="vim \"$(dirname $0)\"/zshrc-$(hostname).sh && exec zsh"
-alias epoch="date +%s"
