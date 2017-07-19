@@ -1,6 +1,6 @@
 closechannel(){
-	rm $1
-	unset channels[$1]
+	rm $channels[$1]
+	unset $channels[$1]
 }
 
 writechannel(){
@@ -14,8 +14,6 @@ readchannel(){
 }
 
 preparechannel(){
-	#TODO check number of params, must be one
-	#TODO create channel if not exists
 	if [[ "$1" == "" ]]; then
 		echo "invalid channel name"
 		return 1
@@ -30,3 +28,4 @@ preparechannel(){
 declare -A channels
 alias -g →="| writechannel"
 alias -g ←="readchannel"
+alias cch=closechannel
