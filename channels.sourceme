@@ -1,6 +1,11 @@
+# This part of zshproject does not work yet, I'm working on it
 closechannel(){
 	rm $channels[$1]
 	unset $channels[$1]
+}
+
+initchannel(){
+	:>$channels[$1]
 }
 
 writechannel(){
@@ -29,3 +34,7 @@ declare -A channels
 alias -g →="| writechannel"
 alias -g ←="readchannel"
 alias cch=closechannel
+
+# sample usage:
+# proxy local port 8090 to local port 9090
+#  ← channelname | nc -l -p 8090 | nc localhost 9090 → channelname &
