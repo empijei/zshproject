@@ -89,8 +89,12 @@ search(){
 
 #ZSH HELPER (all together)
 help(){
+	#TODO check if command exists, if so call with --help
+	# if it gives unrecognized option, call with -h
+	# if it keeps giving problem check for man page (man -k $@)
+	# if man page is not available
 	pacman -Ss $@
-	man -k $@
+	# Last resort
 	useful $@
 }
 
