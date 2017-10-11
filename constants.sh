@@ -13,7 +13,7 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt autocd extendedglob
 setopt PROMPT_SUBST
-setopt CORRECT 
+setopt CORRECT
 setopt AUTO_PUSHD
 setopt PUSHD_SILENT
 setopt PUSHD_TO_HOME
@@ -24,9 +24,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 HISTFILE=~/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
-RPROMPT='$(jobs | sed -e "s:\s*[-+]\s*[a-z]*:$1:g" | tr "\n" " ")%f'
-PROMPT='╭─$(parse-status)%F{3}%n@%m:%~%f$(git-stuff)
-╰─$(parse-mode)> ' #─>
+RPROMPT='$(jobs | cut -d" " -f1,6 | tr "\n" " ")%f'
+PROMPT='╭─$(parse-status)${ZSH_MODE} %F{3}%n@%m:%~%f$(git-stuff)
+╰─> ' #─>
 
 parse-status(){
 	local LAST_EXIT_CODE=$?
@@ -58,22 +58,18 @@ git-stuff(){
 	fi
 }
 
-parse-mode(){
-local MODE=""
+function zle-line-init zle-keymap-select {
+local ZSH_MODE=""
 case $KEYMAP in
 	vicmd)
-		MODE="NORM"
+		ZSH_MODE="%F{1}[NOR]%f"
 		;;
 	main|viins)
+		ZSH_MODE="%F{4}[INS]%f"
 		;;
 esac
-echo $MODE
-}
-
-function zle-line-init zle-keymap-select {
 zle reset-prompt
 }
-
 zle -N zle-line-init
 zle -N zle-keymap-select
 
