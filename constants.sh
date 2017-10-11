@@ -26,7 +26,7 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 RPROMPT='$(jobs | sed -e "s:\s*[-+]\s*[a-z]*:$1:g" | tr "\n" " ")%f'
 PROMPT='╭─$(parse-status)%F{3}%n@%m:%~%f$(git-stuff)
-╰─$ ' #─>
+╰─$(parse-mode)> ' #─>
 
 parse-status(){
 	local LAST_EXIT_CODE=$?
@@ -49,14 +49,33 @@ parse-status(){
 git-stuff(){
 	git rev-parse --is-inside-work-tree >&/dev/null&&
 		echo &&
-		echo -n "╞  %F{4}git:("$(git rev-parse --abbrev-ref HEAD 2>/dev/null)") " && 
-	if [[ -z $(git status -s 2>/dev/null) ]] ; 
+		echo -n "╞  %F{4}git:("$(git rev-parse --abbrev-ref HEAD 2>/dev/null)") " &&
+	if [[ -z $(git status -s 2>/dev/null) ]] ;
 	then
 		echo -n "%F{2}✓%f"
 	else
 		echo -n "%F{1}✗%f"
 	fi
 }
+
+parse-mode(){
+local MODE=""
+case $KEYMAP in
+	vicmd)
+		MODE="NORM"
+		;;
+	main|viins)
+		;;
+esac
+echo $MODE
+}
+
+function zle-line-init zle-keymap-select {
+zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 autoload -U colors && colors
 autoload -Uz compinit
