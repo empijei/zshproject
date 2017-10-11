@@ -7,6 +7,7 @@ export VIMRUNTIME=/usr/share/vim/vim80
 export EDITOR=/usr/bin/vim
 export PYTHONSTARTUP=".pythonstartup.py"
 export BROWSER=/usr/bin/chromium
+export LC_CTYPE=en_US.UTF-8
 #export TERMINAL="terminator"
 
 setopt INC_APPEND_HISTORY
@@ -27,14 +28,12 @@ SAVEHIST=10000000
 
 # 
 RPROMPT='$(jobs | sed -e "s:\s*[-+]\s*[a-z]*:$1:g" | tr "\n" " ")%f'
-PROMPT='$(parse-status)$(print-prompt)$(git-stuff)
-$(parse-mode)' #─>
-
-#PROMPT='╭─$(parse-status)$(print-prompt)$(git-stuff)
-#╰─$ ' #─>
+PROMPT='
+$(parse-status)$(print-prompt)$(git-stuff)
+$(parse-mode)'
 
 print-prompt(){
-local STATIC='%n@%m:%~ '"\033[0;33m"'%f'
+local STATIC='%n@%m:%~'
 echo $STATIC
 }
 
@@ -49,10 +48,10 @@ case $LAST_EXIT_CODE in
 		echo "\033[0;30;46m (SUSPENDED) \033[0;36;43m$RESET"
 		;;
 	130)
-		echo "\033[0;30;41m (INTERRUPTED) \033[0;31;43m$RESET"
+		echo "\033[0;37;41m (INTERRUPTED) \033[0;31;43m$RESET"
 		;;
 	*)
-		echo "\033[0;30;41m (ERROR $LAST_EXIT_CODE) \033[0;31;43m$RESET"
+		echo "\033[0;37;41m (ERROR $LAST_EXIT_CODE) \033[0;31;43m$RESET"
 		;;
 esac
 }
@@ -67,13 +66,13 @@ zle -N zle-keymap-select
 
 parse-mode(){
 local MODE=""
-local RESET="\033[0;37m"
+local RESET="%0{\033[0;37m%}"
 case $KEYMAP in
 	vicmd)
-		MODE="\033[0;30;42m NORMAL \033[0;32m$RESET "
+		MODE="%0{\033[0;30;42m%} NORMAL %1{\033[0;32m%}$RESET "
 		;;
 	main|viins)
-		MODE="\033[0;30;47m INSERT \033[0;37m$RESET "
+		MODE="%0{\033[0;30;47m%} INSERT %1{\033[0;37m%}$RESET "
 		;;
 esac
 echo $MODE
@@ -81,13 +80,13 @@ echo $MODE
 
 git-stuff(){
 git rev-parse --is-inside-work-tree >&/dev/null&&
-	echo -n "╞  %F{4}git:(" $(git rev-parse --abbrev-ref HEAD 2>/dev/null)") " &&
+	echo -n "%3{\033[0;33;46m\033[0;30;46m %} $(git rev-parse --abbrev-ref HEAD 2>/dev/null) " &&
 	if [[ -z $(git status -s 2>/dev/null) ]] ;
 	then
-		echo -n "%F{2}✓%f"
+		echo -n "✓"
 	else
-		echo -n "%F{1}✗%f"
-	fi
+		echo -n "✗"
+	fi && echo -n "%1{\033[0;37m\033[0;36m%}" || echo -n "\033[0;33m"
 }
 
 autoload -U colors && colors
