@@ -23,9 +23,9 @@ alias copernico="bash /home/rob/empijei/foobar/copernico-menu/fetch.sh"
 alias wpscan="docker run -it --rm wpscanteam/wpscan"
 
 analyze-code(){
-	echo "Counting lines of code"
-	cloc --md --out=cloc.md .
-	echo "Generating tags..."
-	ctags -R .
-	echo "Tags generated"
+echo "Counting lines of code"
+cloc --md --out=cloc.md .
+echo "Generating tags..."
+ctags -R .
+echo "Tags generated"
 }

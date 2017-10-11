@@ -24,33 +24,65 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 HISTFILE=~/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
+
+# 
 RPROMPT='$(jobs | sed -e "s:\s*[-+]\s*[a-z]*:$1:g" | tr "\n" " ")%f'
-PROMPT='╭─$(parse-status)%F{3}%n@%m:%~%f$(git-stuff)
-╰─$ ' #─>
+PROMPT='$(parse-status)$(print-prompt)$(git-stuff)
+$(parse-mode)' #─>
+
+#PROMPT='╭─$(parse-status)$(print-prompt)$(git-stuff)
+#╰─$ ' #─>
+
+print-prompt(){
+local STATIC='%n@%m:%~%f'
+echo $STATIC
+}
 
 parse-status(){
-	local LAST_EXIT_CODE=$?
-	case $LAST_EXIT_CODE in
-		0)
-			echo "%F{2} (OK) "
-			;;
-		148)
-			echo "%F{4} (SUSPENDED) "
-			;;
-		130)
-			echo "%F{1} (INTERRUPTED) "
-			;;
-		*)
-			echo "%F{1} (ERROR $LAST_EXIT_CODE) "
-			;;
-	esac
+local LAST_EXIT_CODE=$?
+local RESET="\033[0;30;43m"
+case $LAST_EXIT_CODE in
+	0)
+		echo "\033[0;30;42m (OK) \033[0;32;43m$RESET"
+		;;
+	148)
+		echo "\033[0;30;46m (SUSPENDED) \033[0;36;43m$RESET"
+		;;
+	130)
+		echo "\033[0;30;41m (INTERRUPTED) \033[0;31;43m$RESET"
+		;;
+	*)
+		echo "\033[0;30;41m (ERROR $LAST_EXIT_CODE) \033[0;31;43m$RESET"
+		;;
+esac
+}
+
+
+function zle-line-init zle-keymap-select {
+zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+parse-mode(){
+local MODE=""
+local RESET="\033[0;37m"
+case $KEYMAP in
+	vicmd)
+		MODE="\033[0;30;42m NORMAL \033[0;32m$RESET "
+		;;
+	main|viins)
+		MODE="\033[0;30;47m INSERT \033[0;37m$RESET "
+		;;
+esac
+echo $MODE
 }
 
 git-stuff(){
-	git rev-parse --is-inside-work-tree >&/dev/null&&
-		echo &&
-		echo -n "╞  %F{4}git:("$(git rev-parse --abbrev-ref HEAD 2>/dev/null)") " && 
-	if [[ -z $(git status -s 2>/dev/null) ]] ; 
+git rev-parse --is-inside-work-tree >&/dev/null&&
+	echo -n "╞  %F{4}git:(" $(git rev-parse --abbrev-ref HEAD 2>/dev/null)") " &&
+	if [[ -z $(git status -s 2>/dev/null) ]] ;
 	then
 		echo -n "%F{2}✓%f"
 	else
