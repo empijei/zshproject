@@ -39,19 +39,19 @@ echo $STATIC
 
 parse-status(){
 local LAST_EXIT_CODE=$?
-local RESET="\033[0;30;43m"
+local RESET="%0{\033[0;30;43m%}"
 case $LAST_EXIT_CODE in
 	0)
-		echo "\033[0;30;42m (OK) \033[0;32;43m$RESET"
+		echo "%0{\033[0;30;42m%} (OK) %1{\033[0;32;43m%}$RESET"
 		;;
 	148)
-		echo "\033[0;30;46m (SUSPENDED) \033[0;36;43m$RESET"
+		echo "%0{\033[0;30;46m%} (SUSPENDED) %1{\033[0;36;43m%}$RESET"
 		;;
 	130)
-		echo "\033[0;37;41m (INTERRUPTED) \033[0;31;43m$RESET"
+		echo "%0{\033[0;37;41m%} (INTERRUPTED) %1{\033[0;31;43m%}$RESET"
 		;;
 	*)
-		echo "\033[0;37;41m (ERROR $LAST_EXIT_CODE) \033[0;31;43m$RESET"
+		echo "%0{\033[0;37;41m%} (ERROR $LAST_EXIT_CODE) %1{\033[0;31;43m%}$RESET"
 		;;
 esac
 }
@@ -83,10 +83,10 @@ git rev-parse --is-inside-work-tree >&/dev/null&&
 	echo -n "%3{\033[0;33;46m\033[0;30;46m %} $(git rev-parse --abbrev-ref HEAD 2>/dev/null) " &&
 	if [[ -z $(git status -s 2>/dev/null) ]] ;
 	then
-		echo -n "✓"
+		echo -n "%1{✓%}"
 	else
-		echo -n "✗"
-	fi && echo -n "%1{\033[0;37m\033[0;36m%}" || echo -n "\033[0;33m"
+		echo -n "%1{✗%}"
+	fi && echo -n "%1{\033[0;37m\033[0;36m%}" || echo -n "%1{\033[0;33m%}"
 }
 
 autoload -U colors && colors

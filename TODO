@@ -1,2 +1,4 @@
 check if os Darwin, or Arch, or Ubuntu if it is change os-dependent aliases
 do something general for debian distros
+
+in powerline fix prompt breaking when splitting horizontally
