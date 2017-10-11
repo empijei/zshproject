@@ -25,7 +25,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 RPROMPT='$(jobs | cut -d" " -f1,6 | tr "\n" " ")%f'
-PROMPT='╭─$(parse-status)${ZSH_MODE} %F{3}%n@%m:%~%f$(git-stuff)
+PROMPT='╭─$(parse-status)${ZSH_MODE}%F{3}%n@%m:%~%f$(git-stuff)
 ╰─> ' #─>
 
 parse-status(){
@@ -62,10 +62,10 @@ function zle-line-init zle-keymap-select {
 local ZSH_MODE=""
 case $KEYMAP in
 	vicmd)
-		ZSH_MODE="%F{1}[NOR]%f"
+		ZSH_MODE="%F{1}[NOR] %f"
 		;;
 	main|viins)
-		ZSH_MODE="%F{4}[INS]%f"
+		ZSH_MODE="%F{4}[INS] %f"
 		;;
 esac
 zle reset-prompt
