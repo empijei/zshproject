@@ -34,7 +34,7 @@ $(parse-mode)' #─>
 #╰─$ ' #─>
 
 print-prompt(){
-local STATIC='%n@%m:%~%f'
+local STATIC='%n@%m:%~ '"\033[0;33m"'%f'
 echo $STATIC
 }
 
