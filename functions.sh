@@ -126,7 +126,14 @@ random-chars(){
 	egrep -o --text '[0-9a-zA-Z]' |
 	head -n $1 |
 	tr -d '\n'
-}         
+}
+
+random-password(){
+	cat /dev/urandom| 
+	egrep -o --text '[0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM,./;<>?:$=#&*@%^!~`]' |
+	head -n $1 |
+	tr -d '\n'
+}
 
 putclip(){
 	cat "$@" | xclip -selection c
