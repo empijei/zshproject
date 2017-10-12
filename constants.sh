@@ -26,7 +26,7 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 RPROMPT='$(jobs | cut -d" " -f1,6 | tr "\n" " ")%f'
 PROMPT='╭─$(parse-status)${ZSH_MODE}%F{3}%n@%m:%~%f$(git-stuff)
-╰─> ' #─>
+╰─→ ' #─>
 
 parse-status(){
 	local LAST_EXIT_CODE=$?
