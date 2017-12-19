@@ -22,6 +22,8 @@ alias emulator="export LD_PRELOAD='/usr/\$LIB/libstdc++.so.6 /usr/\$LIB/libgcc_s
 alias copernico="bash /home/rob/empijei/foobar/copernico-menu/fetch.sh"
 alias wpscan="docker run -it --rm wpscanteam/wpscan"
 alias "/"="fgrep"
+alias msfdocker="/home/rob/external_packages/github.com/rapid7/metasploit-framework/docker/bin/msfconsole"
+#db_rebuild_cache
 
 analyze-code(){
 	echo "Counting lines of code"
