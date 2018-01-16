@@ -24,6 +24,7 @@ alias wpscan="docker run -it --rm wpscanteam/wpscan"
 alias "/"="fgrep"
 alias msfdocker="/home/rob/external_packages/github.com/rapid7/metasploit-framework/docker/bin/msfconsole"
 #db_rebuild_cache
+alias fzfcontent="grep --line-buffered --color=never -r '' * | fzf"
 
 analyze-code(){
 	echo "Counting lines of code"
