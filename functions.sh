@@ -135,6 +135,12 @@ random-password(){
 	tr -d '\n'
 }
 
+random-passphrase(){
+        shuf -n $1 --random-source=/dev/urandom <(
+          grep -E -o "[a-z]{3,}" /usr/share/dict/words) |
+          tr '\n' ' '
+}
+
 putclip(){
 	cat "$@" | xclip -selection c
 }
